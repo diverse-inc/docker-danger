@@ -12,6 +12,6 @@ RUN apk update &&\
     bash \
     git
 
-WORKDIR /workdir
+WORKDIR /danger
 ENTRYPOINT ["danger"]
 

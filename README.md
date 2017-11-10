@@ -4,9 +4,9 @@ Dangerfileのあるディレクトリをボリュームとして`/workdir`にマ
 例: docker-compose.yml
 ```
 compass:
-  image: diverse/danger:latest
+  image: diverse/danger
   volumes:
-    - ./static:/workdir
+    - .:/danger
 ```
 
 #### 実行
