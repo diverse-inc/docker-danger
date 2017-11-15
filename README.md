@@ -1,16 +1,26 @@
 ### 使い方
-Dangerfileのあるディレクトリをボリュームとして`/workdir`にマウントする
+CircleCIなどのCIでimageを利用する
 
-例: docker-compose.yml
+例: CircleCI 2.0での記述
 ```
-compass:
-  image: diverse/danger
-  volumes:
-    - .:/danger
-```
+version: 2
 
-#### 実行
+jobs:
+  verify:
+    docker:
+      - image: diverse/danger
+    steps:
+      - checkout
+      - run:
+          name: Run Danger
+          command: |
+            danger
+workflows:
+  version: 2
+  verify_pullrequest:
+    jobs:
+      - verify:
+          filters:
+            branches:
+              ignore: master
 ```
-docker-danger run
-```
-
